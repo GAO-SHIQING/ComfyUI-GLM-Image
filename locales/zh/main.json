@@ -1,0 +1,9 @@
+{
+  "nodeCategories": {
+    "GLM-Image/Loaders": "GLM图像/模型加载",
+    "GLM-Image/Sampling": "GLM图像/采样参数",
+    "GLM-Image/Text": "GLM图像/文本",
+    "GLM-Image/Comfy": "GLM图像/Comfy",
+    "GLM-Image/Generate": "GLM图像/图像生成"
+  }
+}

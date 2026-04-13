@@ -1,0 +1,9 @@
+{
+  "nodeCategories": {
+    "GLM-Image/Loaders": "GLM-Image/Loaders",
+    "GLM-Image/Sampling": "GLM-Image/Sampling",
+    "GLM-Image/Text": "GLM-Image/Text",
+    "GLM-Image/Comfy": "GLM-Image/Comfy",
+    "GLM-Image/Generate": "GLM-Image/Generate"
+  }
+}

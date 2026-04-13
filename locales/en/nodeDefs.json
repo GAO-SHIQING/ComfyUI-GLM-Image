@@ -1,0 +1,142 @@
+{
+  "GLMImageLoader": {
+    "display_name": "GLM-Image Loader",
+    "description": "Load a GLM-Image model from the ComfyUI checkpoints directory",
+    "inputs": {
+      "model_name": {
+        "name": "Model Folder",
+        "tooltip": "Select a model folder from ComfyUI/models/checkpoints"
+      },
+      "device": {
+        "name": "Device",
+        "tooltip": "Inference device, auto selects automatically"
+      },
+      "dtype": {
+        "name": "Precision",
+        "tooltip": "Model inference precision"
+      },
+      "enable_attention_slicing": {
+        "name": "Attention Slicing",
+        "tooltip": "Reduce VRAM usage with possible speed tradeoff"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "GLM Model",
+        "tooltip": "Usable GLM-Image model object"
+      }
+    }
+  },
+  "GLMImageTextEncode": {
+    "display_name": "GLM-Image Text Encode",
+    "description": "Wrap text into GLM conditioning input",
+    "inputs": {
+      "text": {
+        "name": "Text",
+        "tooltip": "Input prompt text"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Conditioning",
+        "tooltip": "Text conditioning for GLM sampling"
+      }
+    }
+  },
+  "GLMImageEmptyLatentImage": {
+    "display_name": "GLM-Image Empty Latent",
+    "description": "Create GLM latent descriptor for text-to-image",
+    "inputs": {
+      "width": {
+        "name": "Width",
+        "tooltip": "Target width"
+      },
+      "height": {
+        "name": "Height",
+        "tooltip": "Target height"
+      },
+      "batch_size": {
+        "name": "Batch Size",
+        "tooltip": "Generation batch size"
+      },
+      "align_to_32": {
+        "name": "Align To 32",
+        "tooltip": "Align size to multiples of 32"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent",
+        "tooltip": "Latent config for text-to-image"
+      }
+    }
+  },
+  "GLMImageImageToLatent": {
+    "display_name": "GLM-Image Image To Latent",
+    "description": "Wrap input image into a GLM latent descriptor for image-to-image",
+    "inputs": {
+      "image": {
+        "name": "Image",
+        "tooltip": "Input image"
+      },
+      "use_image_size": {
+        "name": "Use Image Size",
+        "tooltip": "Use input image dimensions when enabled"
+      },
+      "width": {
+        "name": "Width",
+        "tooltip": "Target width (used when image size is disabled)"
+      },
+      "height": {
+        "name": "Height",
+        "tooltip": "Target height (used when image size is disabled)"
+      },
+      "align_to_32": {
+        "name": "Align To 32",
+        "tooltip": "Align size to multiples of 32"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent",
+        "tooltip": "Latent config for image-to-image"
+      }
+    }
+  },
+  "GLMImageKSampler": {
+    "display_name": "GLM-Image KSampler",
+    "description": "Comfy-style unified sampler for T2I and I2I",
+    "inputs": {
+      "glm_model": {
+        "name": "GLM Model",
+        "tooltip": "Loaded GLM-Image model"
+      },
+      "positive": {
+        "name": "Positive Conditioning",
+        "tooltip": "Positive text conditioning"
+      },
+      "latent_image": {
+        "name": "Latent Input",
+        "tooltip": "Empty latent or image-to-latent output"
+      },
+      "seed": {
+        "name": "Seed",
+        "tooltip": "Random seed"
+      },
+      "steps": {
+        "name": "Steps",
+        "tooltip": "Number of inference steps"
+      },
+      "cfg": {
+        "name": "CFG",
+        "tooltip": "Guidance scale"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Image",
+        "tooltip": "Sampled output image"
+      }
+    }
+  }
+}

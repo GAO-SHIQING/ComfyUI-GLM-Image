@@ -1,0 +1,142 @@
+{
+  "GLMImageLoader": {
+    "display_name": "GLM-Image 加载器",
+    "description": "从 ComfyUI checkpoints 目录加载 GLM-Image 模型",
+    "inputs": {
+      "model_name": {
+        "name": "模型目录",
+        "tooltip": "从 ComfyUI/models/checkpoints 下拉选择模型目录"
+      },
+      "device": {
+        "name": "设备",
+        "tooltip": "推理设备，auto 会自动选择"
+      },
+      "dtype": {
+        "name": "精度",
+        "tooltip": "模型推理精度"
+      },
+      "enable_attention_slicing": {
+        "name": "注意力切片",
+        "tooltip": "降低显存占用，可能稍慢"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "GLM 模型",
+        "tooltip": "GLM-Image 可用模型对象"
+      }
+    }
+  },
+  "GLMImageTextEncode": {
+    "display_name": "GLM-Image 文本编码",
+    "description": "将文本包装为 GLM 条件输入",
+    "inputs": {
+      "text": {
+        "name": "文本",
+        "tooltip": "输入提示词文本"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "条件",
+        "tooltip": "GLM 采样使用的文本条件"
+      }
+    }
+  },
+  "GLMImageEmptyLatentImage": {
+    "display_name": "GLM-Image 空 Latent",
+    "description": "创建文生图所需的 GLM latent 描述",
+    "inputs": {
+      "width": {
+        "name": "宽度",
+        "tooltip": "目标宽度"
+      },
+      "height": {
+        "name": "高度",
+        "tooltip": "目标高度"
+      },
+      "batch_size": {
+        "name": "批量",
+        "tooltip": "生成批量大小"
+      },
+      "align_to_32": {
+        "name": "32 对齐",
+        "tooltip": "是否将尺寸对齐到 32 的倍数"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent",
+        "tooltip": "文生图 latent 配置"
+      }
+    }
+  },
+  "GLMImageImageToLatent": {
+    "display_name": "GLM-Image 图转 Latent",
+    "description": "将输入图像包装为图生图 latent 描述",
+    "inputs": {
+      "image": {
+        "name": "图像",
+        "tooltip": "输入图像"
+      },
+      "use_image_size": {
+        "name": "使用原图尺寸",
+        "tooltip": "开启后使用输入图像宽高"
+      },
+      "width": {
+        "name": "宽度",
+        "tooltip": "目标宽度（关闭使用原图尺寸时生效）"
+      },
+      "height": {
+        "name": "高度",
+        "tooltip": "目标高度（关闭使用原图尺寸时生效）"
+      },
+      "align_to_32": {
+        "name": "32 对齐",
+        "tooltip": "是否将尺寸对齐到 32 的倍数"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "Latent",
+        "tooltip": "图生图 latent 配置"
+      }
+    }
+  },
+  "GLMImageKSampler": {
+    "display_name": "GLM-Image K采样器",
+    "description": "Comfy 风格统一采样器（支持 T2I/I2I）",
+    "inputs": {
+      "glm_model": {
+        "name": "GLM 模型",
+        "tooltip": "加载后的 GLM-Image 模型"
+      },
+      "positive": {
+        "name": "正向条件",
+        "tooltip": "正向文本条件"
+      },
+      "latent_image": {
+        "name": "Latent 输入",
+        "tooltip": "空 latent 或图转 latent"
+      },
+      "seed": {
+        "name": "种子",
+        "tooltip": "随机种子"
+      },
+      "steps": {
+        "name": "步数",
+        "tooltip": "推理步数"
+      },
+      "cfg": {
+        "name": "CFG",
+        "tooltip": "引导强度"
+      }
+    },
+    "outputs": {
+      "0": {
+        "name": "图像",
+        "tooltip": "采样输出图像"
+      }
+    }
+  }
+}
